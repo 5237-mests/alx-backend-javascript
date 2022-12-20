@@ -1,1 +1,0 @@
-## Paskal triangle
