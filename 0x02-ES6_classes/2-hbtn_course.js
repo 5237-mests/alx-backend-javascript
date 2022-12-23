@@ -17,18 +17,6 @@ export default class HolbertonCourse {
     }
   }
 
-  get name() {
-    return this._name;
-  }
-
-  get length() {
-    return this._length;
-  }
-
-  get student() {
-    return this._students;
-  }
-
   set name(newName) {
     if (typeof (newName) === 'string') {
       this._name = newName;
@@ -46,10 +34,22 @@ export default class HolbertonCourse {
   }
 
   set student(newStudent) {
-    if (Array.isArray(newStudent)) {
+    if (Array.isArray(newStudent) && (newStudent.every((el) => typeof el === 'string'))) {
       this._students = newStudent;
     } else {
       throw new TypeError('List of student must be in array');
     }
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get length() {
+    return this._length;
+  }
+
+  get student() {
+    return this._students;
   }
 }
