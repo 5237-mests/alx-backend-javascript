@@ -20,3 +20,7 @@ let student2: Student = {
 }
 
 let studentsList = [student1, student2];
+
+let cell = document.createElement("h1")
+const cellText = document.createTextNode(`cell in row , column `);
+cell.appendChild(cellText)
