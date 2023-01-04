@@ -56,3 +56,4 @@ function executeWork(employee: Teacher | Director) {
     console.log(teach.workTeacherTasks())
   }
 }
+
