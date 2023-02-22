@@ -12,8 +12,8 @@ class StudentsController {
       .then((report) => {
         Object.keys(report).forEach((key) => {
           const listOfStudent = [`Number of students in ${key}: ${report[key].length}. List: `];
-          listOfStudent.push(report[key].join(' ')); // .join('\n')
-          responseParts.push(listOfStudent.join(' ')); // .join('\n')
+          listOfStudent.push(report[key].join(', ')); // .join('\n')
+          responseParts.push(listOfStudent.join('')); // .join('\n')
         });
         const responsText = responseParts.join('\n');
         response.statusCode = 200;
@@ -39,8 +39,8 @@ class StudentsController {
     }
     readDatabase(dataPath)
       .then((report) => {
-        responseParts.push(report[major].join(' '));
-        const responseText = responseParts.join(' ');
+        responseParts.push(report[major].join(', '));
+        const responseText = responseParts.join('');
         response.status(200).send(responseText);
       })
       .catch((err) => {
