@@ -15,15 +15,12 @@ class StudentsController {
           listOfStudent.push(report[key].join(', ')); // .join('\n')
           responseParts.push(listOfStudent.join('')); // .join('\n')
         });
-        const responsText = responseParts.join('\n');
-        response.statusCode = 200;
-        response.send(responsText);
+        response.setHeader('statusCode', 200);
+        response.status(200).send(responseParts.join('\n'));
       })
       .catch((err) => {
-        responseParts.push(err instanceof Error ? err.message : err.toString());
-        const responsText = responseParts.join('\n');
-        response.statusCode = 500;
-        response.send(responsText);
+        response.setHeader('statusCode', 500);
+        response.status(500).send(err instanceof Error ? err.message : err.toString());
       });
   }
 
@@ -41,6 +38,7 @@ class StudentsController {
       .then((report) => {
         responseParts.push(report[major].join(', '));
         const responseText = responseParts.join('');
+        response.setHeader('statusCode', 200);
         response.status(200).send(responseText);
       })
       .catch((err) => {
