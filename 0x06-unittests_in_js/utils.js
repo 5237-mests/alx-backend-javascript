@@ -13,7 +13,7 @@ const Utils = {
       res = (Math.round(a) / Math.round(b));
     }
     return res;
-  }
-}
+  },
+};
 
 module.exports = Utils;
