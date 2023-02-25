@@ -7,15 +7,6 @@ describe('calculateNumber()', function () {
     it('sum 1', function () {
       assert.strictEqual(calculateNumber('SUM', -1.4, -4.5), -5);
     });
-    it('sum 2', function () {
-      assert.strictEqual(calculateNumber('SUBSTRACT', -1.4, -4.5), 3);
-    });
-    it('sum 3', function () {
-      assert.strictEqual(calculateNumber('DIVIDE', -1.4, -4.5), 0.25);
-    });
-    it('sum 4', function () {
-      assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
-    });
     it('floating point whole numbers (ADD)', () => {
       assert.strictEqual(calculateNumber('SUM', 1.0, 2.0), 3);
     });
@@ -42,34 +33,43 @@ describe('calculateNumber()', function () {
     });
   });
   
-  describe('type === SUBSTRACT', () => {
+  describe('type === SUBTRACT', () => {
+    it('sum 2', function () {
+      assert.strictEqual(calculateNumber('SUBTRACT', -1.4, -4.5), 3);
+    });
     it('floating point whole numbers (SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 1.0, 2.0), -1);
+      assert.strictEqual(calculateNumber('SUBTRACT', 1.0, 2.0), -1);
     });
     it('rounding down b\'s floating point fractional number(SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT',1.0, 2.4), -1);
+      assert.strictEqual(calculateNumber('SUBTRACT',1.0, 2.4), -1);
     });
     it('rounding down a and b\'s floating point fractional number(SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 1.4, 2.4), -1);
+      assert.strictEqual(calculateNumber('SUBTRACT', 1.4, 2.4), -1);
     });
     it('rounding down a\'s floating point fractional number(SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 1.4, 2.0), -1);
+      assert.strictEqual(calculateNumber('SUBTRACT', 1.4, 2.0), -1);
     });
     it('rounding up b\'s floating point fractional numbers(SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 1.0, 2.5), -2);
+      assert.strictEqual(calculateNumber('SUBTRACT', 1.0, 2.5), -2);
     });
     it('rounding up a and b\'s floating point fractional numbers(SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 2.6, 2.5), 0);
+      assert.strictEqual(calculateNumber('SUBTRACT', 2.6, 2.5), 0);
     });
     it('rounding up a\'s floating point fractional numbers(SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 2.6, 2.0), 1);
+      assert.strictEqual(calculateNumber('SUBTRACT', 2.6, 2.0), 1);
     });  
-    it('rounding down a and b floating point fractional numbers with trailing 9\'s (SUBSTRACT)', () => {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 2.499999, 3.499999), -1);
+    it('rounding down a and b floating point fractional numbers with trailing 9\'s (SUBTRACT)', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', 2.499999, 3.499999), -1);
     });
   });
   
   describe('type === DIVIDE', () => {
+    it('sum 3', function () {
+      assert.strictEqual(calculateNumber('DIVIDE', -1.4, -4.5), 0.25);
+    });
+    it('sum 4', function () {
+      assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
+    });
     it('floating point whole numbers (DIVIDE)', () => {
       assert.strictEqual(calculateNumber('DIVIDE', 1.0, 2.0), 0.5);
     });
